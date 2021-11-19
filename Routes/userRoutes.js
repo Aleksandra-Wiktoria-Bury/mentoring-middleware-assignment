@@ -10,7 +10,9 @@ const isFbw = require('../Middleware/isFbw');
 const validate = [doesExist, is18, isFbw];
 //* ------- end of validators
 
+//* ------- SANITIZERS
+const sanitize = require('../Middleware/sanitize')
 
 router.post('/validateuser', validate, controllers.validate)
-router.post('/sanitizeuser', controllers.sanitize)
+router.post('/sanitizeuser', validate, sanitize, controllers.sanitize)
 module.exports = router
